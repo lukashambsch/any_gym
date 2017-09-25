@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row visit-list">
+    <div class="row">
+      <section>
+        <div class="columns twelve action-bar">
+        </div>
+        <h3>Check In</h3>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row visit-detail">
+  <div class="row">
+    <section>
+      <button class="button btn btn-gray">
+        <span class="fa fa-arrow-left"></span>
+      </button>
+
+      <div class="row">
+        <img class="profile-photo u-img-responsive" src="" alt="">
+      </div>
+
+      <div class="columns twelve">
+        <p>
+          <b>Name:</b>
+          Lukas Hambsch (<%= @visit %>)
+        </p>
+        <p>
+          <b>Email:</b>
+          lukas.hambsch@gmail.com
+        </p>
+        <p>
+          <b>Status:</b>
+          Pending
+        </p>
+      </div>
+
+      <div class="button-container">
+        <button class="button btn btn-light-green columns">Approve</button>
+      </div>
+      <div class="button-container">
+        <button class="button btn btn-light-red columns">Deny</button>
+      </div>
+    </section>
+  </div>
+</div>

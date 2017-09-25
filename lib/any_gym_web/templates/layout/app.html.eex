@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Anygym!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <nav role="navigation">
+          <a href="/">
+            <img
+              src="http://nanniesintl.com//wp-content/uploads/2014/12/logo-nanny-new-01.png"
+              alt="Nannies International">
+          </a>
+          <button class="button btn btn-blue">
+            <span>
+              <span class="fa fa-bars"></span>
+            </span>
+          </button>
+          <ul>
+            <li>
+              <a href="/member/locations">Find a Gym</a>
+            </li>
+            <li>
+              <a href="/gym/visits">Approve a Check In</a>
+            </li>
+            <li>
+              <%= link "Register", to: user_path(@conn, :new) %>
+            </li>
+            <li>
+              <a href="/account">My Account</a>
+            </li>
+            <li>
+              <a href="/login">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
