@@ -12,13 +12,13 @@ config :logger, level: :warn
 # Configure your database
 config :any_gym, AnyGym.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "lukashambsch",
+  password: "",
   database: "any_gym_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # Reduce number of rounds during testing
-config :argon2_elixir
+config :argon2_elixir,
   t_cost: 2,
   m_cost: 12

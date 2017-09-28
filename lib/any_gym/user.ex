@@ -19,6 +19,8 @@ defmodule AnyGym.User do
     user
     |> cast(attrs, [:email, :name, :is_admin])
     |> validate_required([:email, :name, :is_admin])
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email, message: "This email is already being used.")
   end
 
   def registration_changeset(%User{} = user, attrs \\ %{}) do

@@ -2,7 +2,7 @@ defmodule AnyGymWeb.UserController do
   use AnyGymWeb, :controller
 
   alias AnyGym.User
-  #plug :scrub_params, "user" when action in [:create]
+  plug :scrub_params, "user" when action in ~w(:create)a
 
   def show(conn, %{"id" => id}) do
     user = AnyGym.Repo.get!(User, id)
@@ -20,6 +20,7 @@ defmodule AnyGymWeb.UserController do
     case AnyGym.Repo.insert(changeset) do
       {:ok, user} ->
         conn
+        |> AnyGymWeb.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
         |> redirect(to: user_path(conn, :show, user))
       {:error, changeset} ->

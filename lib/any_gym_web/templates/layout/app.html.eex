@@ -32,15 +32,21 @@
             <li>
               <a href="/gym/visits">Approve a Check In</a>
             </li>
-            <li>
-              <%= link "Register", to: user_path(@conn, :new) %>
-            </li>
-            <li>
-              <a href="/account">My Account</a>
-            </li>
-            <li>
-              <a href="/login">Logout</a>
-            </li>
+            <%= if @current_user do %>
+              <li>
+                <%= link "My Account", to: user_path(@conn, :show, @current_user.id) %>
+              </li>
+              <li>
+                <%= link "Sign out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link "Register", to: user_path(@conn, :new) %>
+              </li>
+              <li>
+                <%= link "Sign In", to: session_path(@conn, :new) %>
+              </li>
+            <% end %>
           </ul>
         </nav>
       </header>
