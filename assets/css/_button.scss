@@ -1,0 +1,47 @@
+@import 'globals';
+
+.button {
+
+  &.btn {
+    height: 40px;
+    border-radius: 0;
+    border: none;
+  }
+
+  &.btn-white {
+    background-color: white;
+  }
+
+  &.btn-gray {
+    background-color: $gray;
+  }
+
+  &.btn-red {
+    background-color: $red;
+    color: white;
+  }
+
+  &.btn-light-red {
+    background-color: $light-red;
+    color: black;
+  }
+
+  &.btn-blue {
+    background-color: $blue;
+    color: white;
+  }
+
+  &.btn-green {
+    background-color: $green;
+    color: white;
+  }
+
+  &.btn-light-green {
+    background-color: $light-green;
+    color: black;
+  }
+
+  &:hover {
+    opacity: .9;
+  }
+}

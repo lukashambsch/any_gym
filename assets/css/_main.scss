@@ -1,0 +1,104 @@
+@import 'globals';
+
+body {
+  background-color: white;
+  font-family: 'Open Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #323131;
+}
+
+section {
+  background-color: white;
+  padding: 8px;
+
+  /*@media (min-width: $tablet) {*/
+    /*margin: 0 50px;*/
+  /*}*/
+}
+
+header {
+  background-color: white;
+  margin: 0 50px;
+  min-height: 90px;
+  vertical-align: middle;
+}
+
+.visit-detail {
+  .profile-photo {
+    width: 100%;
+    margin: auto;
+
+    @media (min-width: $tablet) {
+      width: 70%;
+    }
+  }
+
+  p {
+    display: inline-block;
+    font-size: 20px;
+    margin: 8px 4px;
+    width: 100%;
+  }
+
+  .button-container {
+    display: inline-block;
+    width: 48%;
+    margin: 0 1%;
+
+    button.button.btn {
+      height: 60px;
+    }
+
+    @media (min-width: $tablet) {
+      width: 98%;
+
+      button.button.btn {
+        height: 70px;
+      }
+    }
+  }
+}
+
+.visit-list {
+  .action-bar {
+    height: 70px;
+
+    button {
+      float: right;
+      margin: 15px 0;
+    }
+  }
+}
+
+.visit-row {
+  cursor: pointer;
+  min-height: 70px;
+  vertical-align: middle;
+  border-bottom: 2px solid $light-gray;
+
+  &:hover {
+    background-color: $light-gray;
+    opacity: 1 !important;
+  }
+
+  &.denied {
+    background-color: $light-red;
+    opacity: .75;
+  }
+
+  &.approved {
+    background-color: $light-green;
+    opacity: .75;
+  }
+
+  span {
+    line-height: 70px;
+    font-size: 22px;
+    margin: 4px;
+
+    &:last-child {
+      float: right;
+    }
+  }
+}

@@ -12,54 +12,54 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <a href="/">
-            <img
-              src="http://nanniesintl.com//wp-content/uploads/2014/12/logo-nanny-new-01.png"
-              alt="Nannies International">
-          </a>
-          <button class="button btn btn-blue">
-            <span>
-              <span class="fa fa-bars"></span>
-            </span>
-          </button>
-          <ul>
-            <%= if @current_user && is_member(@current_user) do %>
-              <li>
-                <a href="/member/locations">Find a Gym</a>
-              </li>
-            <% end %>
-            <%= if @current_user && is_gym(@current_user) do %>
-              <li>
-                <a href="/gym/visits">Approve a Check In</a>
-              </li>
-            <% end %>
-            <%= if @current_user do %>
-              <li>
-                <%= link "My Account", to: user_path(@conn, :show, @current_user.id) %>
-              </li>
-              <li>
-                <%= link "Sign out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
-              </li>
-            <% else %>
-              <li>
-                <%= link "Register", to: user_path(@conn, :new) %>
-              </li>
-              <li>
-                <%= link "Sign In", to: session_path(@conn, :new) %>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
-      </header>
+    <div>
+      <nav role="navigation">
+        <a href="/">
+          <img
+            src="http://nanniesintl.com//wp-content/uploads/2014/12/logo-nanny-new-01.png"
+            alt="Nannies International">
+        </a>
+        <button class="button btn btn-blue">
+          <span>
+            <span class="fa fa-bars"></span>
+          </span>
+        </button>
+        <ul>
+          <%= if @current_user && is_member(@current_user) do %>
+            <li>
+              <a href="/member/locations">Find a Gym</a>
+            </li>
+          <% end %>
+          <%= if @current_user && is_gym(@current_user) do %>
+            <li>
+              <a href="/gym/visits">Approve a Check In</a>
+            </li>
+          <% end %>
+          <%= if @current_user do %>
+            <li>
+              <%= link "My Account", to: user_path(@conn, :show, @current_user.id) %>
+            </li>
+            <li>
+              <%= link "Sign out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link "Register", to: user_path(@conn, :new) %>
+            </li>
+            <li>
+              <%= link "Sign In", to: session_path(@conn, :new) %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
-        <%= render @view_module, @view_template, assigns %>
+        <div class="container">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
       </main>
 
     </div> <!-- /container -->
