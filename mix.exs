@@ -43,7 +43,8 @@ defmodule AnyGym.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.2"},
-      {:guardian, "~> 0.12.0"}
+      {:guardian, "~> 0.12.0"},
+      {:timex, "~> 3.1"}
     ]
   end
 

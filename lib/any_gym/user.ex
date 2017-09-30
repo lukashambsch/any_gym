@@ -11,6 +11,9 @@ defmodule AnyGym.User do
     field :password_hash, :string
     field :password, :string, virtual: true
 
+    has_one :gym_location, AnyGym.GymLocation
+    has_one :member, AnyGym.Member
+
     timestamps()
   end
 

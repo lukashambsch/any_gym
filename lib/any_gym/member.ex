@@ -7,10 +7,10 @@ defmodule AnyGym.Member do
   schema "members" do
     field :first_name, :string
     field :last_name, :string
-    field :user_id, :id
     field :address_id, :id
 
     has_many :visits, AnyGym.Visit
+    belongs_to :user, AnyGym.User
 
     timestamps()
   end

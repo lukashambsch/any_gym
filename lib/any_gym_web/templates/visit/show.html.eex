@@ -10,18 +10,20 @@
       </div>
 
       <div class="columns twelve">
-        <p>
-          <b>Name:</b>
-          Lukas Hambsch (<%= @visit %>)
-        </p>
-        <p>
-          <b>Email:</b>
-          lukas.hambsch@gmail.com
-        </p>
-        <p>
-          <b>Status:</b>
-          Pending
-        </p>
+        <%= if @visit do %>
+          <p>
+            <b>Name:</b>
+            <%= @visit.member.first_name %> <%= @visit.member.last_name %>
+          </p>
+          <p>
+            <b>Email:</b>
+            <%= @visit.member.user.email %>
+          </p>
+          <p>
+            <b>Status:</b>
+            <%= @visit.status.status_name %>
+          </p>
+        <% end %>
       </div>
 
       <div class="button-container">

@@ -5,10 +5,9 @@ defmodule AnyGym.Visit do
 
 
   schema "visits" do
-    field :gym_location_id, :id
-    field :status_id, :id
-
     belongs_to :member, AnyGym.Member
+    belongs_to :status, AnyGym.Status
+    belongs_to :gym_location, AnyGym.GymLocation
 
     timestamps()
   end

@@ -11,9 +11,9 @@ defmodule AnyGym.GymLocation do
     field :phone_number, :string
     field :website_url, :string
     field :address_id, :id
-    field :user_id, :id
 
     has_many :visits, AnyGym.Visit
+    belongs_to :user, AnyGym.User
 
     timestamps()
   end

@@ -26,12 +26,16 @@
             </span>
           </button>
           <ul>
-            <li>
-              <a href="/member/locations">Find a Gym</a>
-            </li>
-            <li>
-              <a href="/gym/visits">Approve a Check In</a>
-            </li>
+            <%= if @current_user && is_member(@current_user) do %>
+              <li>
+                <a href="/member/locations">Find a Gym</a>
+              </li>
+            <% end %>
+            <%= if @current_user && is_gym(@current_user) do %>
+              <li>
+                <a href="/gym/visits">Approve a Check In</a>
+              </li>
+            <% end %>
             <%= if @current_user do %>
               <li>
                 <%= link "My Account", to: user_path(@conn, :show, @current_user.id) %>
