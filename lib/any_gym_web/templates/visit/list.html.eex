@@ -5,6 +5,13 @@
         <div class="columns twelve action-bar">
         </div>
         <h3>Check In</h3>
+        <%= for visit <- @visits do %>
+          <div>
+            <span><%= visit.member.first_name %></span>
+            <span><%= visit.member.last_name %></span>
+            <span><%= visit.inserted_at %></span>
+          </div>
+        <% end %>
       </section>
     </div>
   </div>

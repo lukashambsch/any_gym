@@ -13,6 +13,8 @@ defmodule AnyGym.GymLocation do
     field :address_id, :id
     field :user_id, :id
 
+    has_many :visits, AnyGym.Visit
+
     timestamps()
   end
 
