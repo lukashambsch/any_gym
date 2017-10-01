@@ -53,16 +53,32 @@
         </ul>
       </nav>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
       <main role="main">
         <div class="container">
-          <%= render @view_module, @view_template, assigns %>
+        <%= if get_flash(@conn, :info) do %>
+          <p class="alert alert-info" role="alert">
+            <%= get_flash(@conn, :info) %>
+            <span class="fa fa-close float-right" onclick="shared.hideAlert()"></span>
+          </p>
+        <% end %>
+        <%= if get_flash(@conn, :error) do %>
+          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <% end %>
+        <%= if get_flash(@conn, :success) do %>
+          <p class="alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
+        <% end %>
+        <%= if get_flash(@conn, :warn) do %>
+          <p class="alert alert-warning" role="alert"><%= get_flash(@conn, :warn) %></p>
+        <% end %>
+
+        <%= render @view_module, @view_template, assigns %>
         </div>
       </main>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>
+      var shared = require('js/shared.js');
+    </script>
   </body>
 </html>

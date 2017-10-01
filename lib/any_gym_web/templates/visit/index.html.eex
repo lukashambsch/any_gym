@@ -1,19 +1,15 @@
-<div class="container">
-  <div class="row visit-list">
-    <div class="row">
-      <section>
-        <div class="columns twelve action-bar">
+<div class="row visit-list">
+  <div class="row">
+    <section>
+      <div class="column action-bar">
+      </div>
+      <h1>Check In</h1>
+      <%= for visit <- @visits do %>
+        <div class="column visit-row">
+          <span><%= visit.member.first_name <> " " <> visit.member.last_name%></span>
+          <span><%= format_date_time(visit.inserted_at) %></span>
         </div>
-        <h3>Check In</h3>
-        <%= for visit <- @visits do %>
-          <div>
-            <span><%= visit.member.first_name %></span>
-            <span><%= visit.member.last_name %></span>
-            <span><%= format_date_time(visit.inserted_at) %></span>
-            <span><%= visit.status.status_name %></span>
-          </div>
-        <% end %>
-      </section>
-    </div>
+      <% end %>
+    </section>
   </div>
 </div>

@@ -8,9 +8,108 @@ body {
   color: #323131;
 }
 
+a {
+  color: $blue;
+}
+
+button {
+  background-color: $blue;
+  border-color: $blue;
+}
+
+.alert {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  .fa-close {
+    position: relative;
+    top: 4px;
+  }
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
 section {
   background-color: white;
   padding: 8px;
+  width: 100%;
+
+  /*@media (min-width: $tablet) {*/
+    /*margin: 0 50px;*/
+  /*}*/
+}
+
+header {
+  background-color: white;
+  margin: 0 50px;
+  min-height: 90px;
+  vertical-align: middle;
+}
+
+.visit-detail {
+  .profile-photo {
+    width: 100%;
+    margin: auto;
+
+    @media (min-width: $tablet) {
+      width: 70%;
+    }
+  }
+
+  p {
+    display: inline-block;
+    font-size: 20px;
+    margin: 8px 4px;
+    width: 100%;
+  }
+
+  .button-container {
+    display: inline-block;
+    width: 48%;
+    margin: 0 1%;
+
+    button.button.btn {
+      height: 60px;
+    }
+
+    @media (min-width: $tablet) {
+      width: 98%;
+
+      button.button.btn {
+        height: 70px;
+      }
+    }
+  }
+}
+
+section {
+  background-color: white;
+  padding: 8px;
+  width: 100%;
 
   /*@media (min-width: $tablet) {*/
     /*margin: 0 50px;*/
@@ -93,7 +192,7 @@ header {
   }
 
   span {
-    line-height: 70px;
+    line-height: 62px;
     font-size: 22px;
     margin: 4px;
 
