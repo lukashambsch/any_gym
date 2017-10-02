@@ -8,6 +8,7 @@ defmodule AnyGym.Member do
     field :first_name, :string
     field :last_name, :string
     field :address_id, :id
+    field :image_url, :string
 
     has_many :visits, AnyGym.Visit
     belongs_to :user, AnyGym.User

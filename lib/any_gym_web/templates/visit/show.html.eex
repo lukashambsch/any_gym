@@ -9,7 +9,7 @@
         <img class="profile-photo u-img-responsive" src="" alt="">
       </div>
 
-      <div class="columns twelve">
+      <div class="column">
         <%= if @visit do %>
           <p>
             <b>Name:</b>
@@ -27,10 +27,10 @@
       </div>
 
       <div class="button-container">
-        <button class="button btn btn-light-green columns">Approve</button>
+        <button class="button btn btn-light-green column">Approve</button>
       </div>
       <div class="button-container">
-        <button class="button btn btn-light-red columns">Deny</button>
+        <button class="button btn btn-light-red column">Deny</button>
       </div>
     </section>
   </div>
