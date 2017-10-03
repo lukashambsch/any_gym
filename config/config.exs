@@ -27,9 +27,8 @@ config :logger, :console,
 import_config "#{Mix.env}.exs"
 
 # Configure Guardian for authentication
-config :guardian, Guardian,
+config :any_gym, AnyGymWeb.Guardian,
   issuer: "AnyGymWeb.#{Mix.env}",
   ttl: {30, :days},
   verify_issuer: true,
-  serializer: AnyGymWeb.GuardianSerializer,
   secret_key: to_string(Mix.env) <> "SuPerseCret_aBraCadabrA"

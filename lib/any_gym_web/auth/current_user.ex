@@ -1,6 +1,6 @@
 defmodule AnyGymWeb.CurrentUser do
   import Plug.Conn
-  import Guardian.Plug
+  import AnyGymWeb.Guardian.Plug
 
   def init(opts), do: opts
 

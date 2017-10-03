@@ -6,7 +6,7 @@ defmodule AnyGymWeb.Auth do
 
   def login(conn, user) do
     conn
-    |> Guardian.Plug.sign_in(user)
+    |> AnyGymWeb.Guardian.Plug.sign_in(user)
   end
 
   def login_by_email_and_password(conn, email, given_pass) do
@@ -24,6 +24,6 @@ defmodule AnyGymWeb.Auth do
   end
 
   def logout(conn) do
-    Guardian.Plug.sign_out(conn)
+    AnyGymWeb.Guardian.Plug.sign_out(conn)
   end
 end

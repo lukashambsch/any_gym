@@ -14,14 +14,12 @@ defmodule AnyGymWeb.Router do
   end
 
   pipeline :with_session do
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
+    plug AnyGymWeb.Guardian.AuthPipeline.Session
     plug AnyGymWeb.CurrentUser
   end
 
   pipeline :login_required do
-    plug Guardian.Plug.EnsureAuthenticated,
-         handler: AnyGymWeb.GuardianErrorHandler
+    plug AnyGymWeb.Guardian.AuthPipeline.Login
   end
 
   pipeline :admin_required do

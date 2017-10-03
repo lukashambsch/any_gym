@@ -1,8 +1,6 @@
 defmodule AnyGymWeb.VisitController do
   use AnyGymWeb, :controller
 
-  import Ecto.Query
-
   def action(conn, _) do
     apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
