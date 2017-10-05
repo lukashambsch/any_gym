@@ -16,6 +16,39 @@ defmodule AnyGymWeb.UserTest do
     refute changeset.valid?
   end
 
+  test "email is required" do
+    attrs = %{@valid_attrs | email: ""}
+    changeset = User.changeset(%User{}, attrs)
+    assert "can't be blank" in errors_on(changeset).email
+  end
+
+  test "name is required" do
+    attrs = %{@valid_attrs | name: ""}
+    changeset = User.changeset(%User{}, attrs)
+    assert "can't be blank" in errors_on(changeset).name
+  end
+
+  test "is_admin is required" do
+    attrs = %{@valid_attrs | is_admin: nil}
+    changeset = User.changeset(%User{}, attrs)
+    assert "can't be blank" in errors_on(changeset).is_admin
+  end
+
+  test "email has to contain @ symbol" do
+    attrs = %{@valid_attrs | email: "test"}
+    changeset = User.changeset(%User{}, attrs)
+    assert "has invalid format" in errors_on(changeset).email
+  end
+
+  test "email must be unique" do
+    changeset = User.changeset(%User{}, @valid_attrs)
+    user = AnyGym.Repo.insert!(changeset)
+    second_changeset = User.changeset(%User{}, @valid_attrs)
+
+    assert {:error, changeset} = AnyGym.Repo.insert(second_changeset)
+    assert "This email is already being used." in errors_on(changeset).email
+  end
+
   test "registration_changeset with valid attributes" do
     changeset = User.registration_changeset(%User{}, @valid_attrs)
     assert changeset.valid?
@@ -24,5 +57,23 @@ defmodule AnyGymWeb.UserTest do
   test "registration_changeset with invalid attributes" do
     changeset = User.registration_changeset(%User{}, @invalid_attrs)
     refute changeset.valid?
+  end
+
+  test "password is required" do
+    attrs = %{@valid_attrs | password: nil}
+    changeset = User.registration_changeset(%User{}, attrs)
+    assert %{password: ["can't be blank"]} = errors_on(changeset)
+  end
+
+  test "password must be longer that 6 characters" do
+    attrs = %{@valid_attrs | password: "test"}
+    changeset = User.registration_changeset(%User{}, attrs)
+    assert %{password: ["should be at least 6 character(s)"]} = errors_on(changeset)
+  end
+
+  test "password hash is saved" do
+    changeset = User.registration_changeset(%User{}, @valid_attrs)
+    {:ok, user} = AnyGym.Repo.insert(changeset)
+    assert user.password_hash
   end
 end
