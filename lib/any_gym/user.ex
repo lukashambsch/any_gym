@@ -1,5 +1,6 @@
 defmodule AnyGym.User do
   use Ecto.Schema
+
   import Ecto.Changeset
   alias AnyGym.User
 
@@ -30,11 +31,12 @@ defmodule AnyGym.User do
     user
     |> changeset(attrs)
     |> cast(attrs, ~w(password)a, [])
+    |> validate_required([:password])
     |> validate_length(:password, min: 6, max: 100)
     |> hash_password
   end
 
-  def hash_password(changeset) do
+  defp hash_password(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true,
                       changes: %{password: password}} ->
