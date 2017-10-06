@@ -2,6 +2,7 @@ defmodule AnyGymWeb.UserTest do
   use AnyGym.DataCase
 
   alias AnyGym.User
+  alias AnyGym.Repo
 
   @valid_attrs %{email: "test@gmail.com", is_admin: false, name: "Test User", password: "testpass"}
   @invalid_attrs %{}
@@ -14,6 +15,19 @@ defmodule AnyGymWeb.UserTest do
   test "changeset with invalid attributes" do
     changeset = User.changeset(%User{}, @invalid_attrs)
     refute changeset.valid?
+  end
+
+  test "insert with valid attributes" do
+    changeset = User.changeset(%User{}, @valid_attrs)
+    user = Repo.insert!(changeset)
+    assert user.id
+  end
+
+  test "insert with invalid attributes" do
+    changeset = User.changeset(%User{}, @invalid_attrs)
+    assert_raise Ecto.InvalidChangesetError, fn ->
+      Repo.insert!(changeset)
+    end
   end
 
   test "email is required" do
@@ -42,10 +56,10 @@ defmodule AnyGymWeb.UserTest do
 
   test "email must be unique" do
     changeset = User.changeset(%User{}, @valid_attrs)
-    user = AnyGym.Repo.insert!(changeset)
+    Repo.insert!(changeset)
     second_changeset = User.changeset(%User{}, @valid_attrs)
 
-    assert {:error, changeset} = AnyGym.Repo.insert(second_changeset)
+    assert {:error, changeset} = Repo.insert(second_changeset)
     assert "This email is already being used." in errors_on(changeset).email
   end
 
@@ -73,7 +87,7 @@ defmodule AnyGymWeb.UserTest do
 
   test "password hash is saved" do
     changeset = User.registration_changeset(%User{}, @valid_attrs)
-    {:ok, user} = AnyGym.Repo.insert(changeset)
+    {:ok, user} = Repo.insert(changeset)
     assert user.password_hash
   end
 end

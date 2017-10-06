@@ -2,10 +2,12 @@ defmodule AnyGymWeb.UserController do
   use AnyGymWeb, :controller
 
   alias AnyGym.User
+  alias AnyGym.Repo
+
   plug :scrub_params, "user" when action in ~w(:create)a
 
   def show(conn, %{"id" => id}) do
-    user = AnyGym.Repo.get!(User, id)
+    user = Repo.get!(User, id)
     render(conn, "show.html", user: user)
   end
 
@@ -17,7 +19,7 @@ defmodule AnyGymWeb.UserController do
   def create(conn, %{"user" => user_params}) do
     changeset = %User{} |> User.registration_changeset(user_params)
 
-    case AnyGym.Repo.insert(changeset) do
+    case Repo.insert(changeset) do
       {:ok, user} ->
         conn
         |> AnyGymWeb.Auth.login(user)
