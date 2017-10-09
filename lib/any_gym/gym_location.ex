@@ -23,6 +23,7 @@ defmodule AnyGym.GymLocation do
     gym_location
     |> cast(attrs, [:location_name, :phone_number, :website_url, :in_network, :monthly_membership_fee])
     |> validate_required([:location_name, :phone_number, :website_url, :in_network, :monthly_membership_fee])
+    |> validate_length(:phone_number, min: 10, max: 10)
     |> assoc_constraint(:user)
   end
 end
