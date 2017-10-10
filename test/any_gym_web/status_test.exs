@@ -2,7 +2,6 @@ defmodule AnyGymWeb.StatusTest do
   use AnyGym.DataCase
 
   alias AnyGym.Status
-  alias AnyGym.Repo
 
   @valid_attrs %{status_name: "Pending"}
   @invalid_attrs %{}

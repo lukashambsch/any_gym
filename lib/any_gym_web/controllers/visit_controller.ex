@@ -17,10 +17,10 @@ defmodule AnyGymWeb.VisitController do
 
   def show(conn, %{"visit_id" => visit_id}, current_user) do
     visit = Ecto.assoc(current_user, :gym_location)
-      |> Repo.all()
-      |> Ecto.assoc(:visits)
-      |> Repo.get(visit_id)
-      |> Repo.preload([member: [:user], status: []])
+    |> Repo.all()
+    |> Ecto.assoc(:visits)
+    |> Repo.get(visit_id)
+    |> Repo.preload([member: [:user], status: []])
 
     render conn, "show.html", visit: visit
   end

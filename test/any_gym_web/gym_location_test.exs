@@ -2,7 +2,6 @@ defmodule AnyGymWeb.GymLocationTest do
   use AnyGym.DataCase
 
   alias AnyGym.GymLocation
-  alias AnyGym.Repo
 
   @valid_attrs %{
     in_network: true,

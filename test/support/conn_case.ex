@@ -20,6 +20,7 @@ defmodule AnyGymWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import AnyGymWeb.Router.Helpers
+      import AnyGym.Factory
 
       # The default endpoint for testing
       @endpoint AnyGymWeb.Endpoint

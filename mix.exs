@@ -44,7 +44,8 @@ defmodule AnyGym.Mixfile do
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.2"},
       {:guardian, "~> 1.0-beta"},
-      {:timex, "~> 3.1"}
+      {:timex, "~> 3.1"},
+      {:ex_machina, "~> 2.1", only: :test}
     ]
   end
 
