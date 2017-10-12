@@ -1,10 +1,17 @@
 defmodule AnyGymWeb.VisitControllerTest do
   use AnyGymWeb.ConnCase, async: true
 
-  test "index/3 responds with visit index page" do
+  setup do
     visit = insert(:visit)
     conn = build_conn()
     |> AnyGymWeb.Auth.login(visit.gym_location.user)
+
+    {:ok, conn: conn, visit: visit}
+  end
+
+  test "index/3 responds with visit index page", state do
+    conn = state[:conn]
+    visit = state[:visit]
 
     response = conn
     |> get(visit_path(conn, :index))
@@ -13,10 +20,9 @@ defmodule AnyGymWeb.VisitControllerTest do
     assert response =~ Phoenix.View.render_to_string(AnyGymWeb.VisitView, "index.html", visits: [visit])
   end
 
-  test "show/3 responds with visit show page" do
-    visit = insert(:visit)
-    conn = build_conn()
-    |> AnyGymWeb.Auth.login(visit.gym_location.user)
+  test "show/3 responds with visit show page", state do
+    conn = state[:conn]
+    visit = state[:visit]
 
     response = conn
     |> get(visit_path(conn, :show, visit.id))
